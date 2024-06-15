@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QUIZ PAGE</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap">
+    <style>
+      body {
+        background-image: url('https://t3.ftcdn.net/jpg/03/83/30/50/360_F_383305055_VmJPSFQVYLKVUMn6a4TqYRolLPynuuXG.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .card {
+        margin-bottom: 20px;
+      }
+
+      .container {
+        background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+        padding: 20px;
+        height:60%;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 100%; /* Adjust width */
+        max-width: 700px; /* Maximum width */
+       
+      }
+
+      .question {
+        font-family: 'DM Serif Display', serif;
+        font-size: 35px;
+      }
+
+      .radio label {
+        font-weight: bold;
+        font-size:20px;
+      }
+
+      .form-group {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container border border-success p-4 m-4 mx-auto">
+      {% for question in questions %}
+      <h1 class="question">Question - {{ question.question }}</h1>
+      <form id="quizForm">
+        <div class="radio">
+          <label>
+            <hr>
+            <input type="radio" id="option1" name="name" value="{{ question.option1 }}">
+            {{ question.option1 }}
+          </label>
+          
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" id="option2" name="name" value="{{ question.option2 }}">
+            {{ question.option2 }}
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" id="option3" name="name" value="{{ question.option3 }}">
+            {{ question.option3 }}
+          </label>
+        </div>
+
+        <div class="radio">
+          <label>
+            <input type="radio" id="option4" name="name" value="{{ question.option4 }}">
+            {{ question.option4 }}
+          </label>
+        </div>
+      </form>
+      {% endfor %}
+
+      <div class="form-group">
+        <button class="btn btn-success" id="save_ans">SUBMIT ANSWER</button>
+      </div>
+
+      <div class="paginator">
+        <div class="form-group">
+          {% if questions.has_next %}
+          <a href="?page={{ questions.next_page_number }}">
+            <button class="btn form-control btn-primary" id="submitAnswer">Next</button>
+          </a>
+          {% else %}
+          <a href="/result/">
+            <button class="btn form-control btn-success" id="submitAnswer">Submit Quiz</button>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    {% load static %}
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>

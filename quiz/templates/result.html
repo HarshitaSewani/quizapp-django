@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://img.freepik.com/premium-photo/beautiful-abstract-wallpaper-high-quality-4k_976268-13.jpg'); /* Add your image URL here */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .result-card {
+            padding: 20px;
+            height:40%;
+            width:40%;            
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            text-align: center;
+        }
+        .result-card h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .result-card p {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-card">
+        <h1>Your Score</h1>
+        <p>You answered <strong style="font-weight: bold;">{{ score }}</strong> questions correctly!</p>
+        <a href="{% url 'home' %}" class="btn btn-primary">Go to Home</a>
+        <a href="{% url 'quiz' %}" class="btn btn-success">Try Again</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
